@@ -3,231 +3,93 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="data:image/png;base64,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" />
-	<title>Forza Horizons 4: Adventure Helper</title>
+	<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAABRdJREFUSEt9lW2oHFcZx3/zui+z77m79y0vvW1zk1tvWm1o0y9CQquQ0gi11pa0X7S2qCD4Uajih9APYmj8UAVfIEikhYIQFVpBsIFKBQlEiGki2t7mprv37t7dnZ2dmZ33ObJzSey1iQ/MMGfmPL9z5v+c8z8S/ydOvfx58fCKRiF3s5OEBGz2HN67OODM2X9Pm7eNT3147OiSOLTS4oHVOT73QJM5w0SRkx3J/b7LBx/ZvP8vh7X2hJ+d+/BTnB0vnji2W5x87jAPre6iVdMRSUxodYgmE9I4ugX3g5goTkmBQFY5+9s2r/1mfQfrVuP40d3iF6ceonXPXXi9DTxzCGlKYjv4/QGx5yPJEkkQkqoKKDKyplDa2wBN5dwftnj5J2u3eNnDo8eWxAvP389Tx+8mCSZY62v45oCpooqQIUlRjTxqpcjw79dwhmOiIEJWFUoLDYrzNSxf8M57A7575uOMmd1e+cFR8eyJJXbpHp41JLQtRCpQ9QL4PqSC/GwDY/csW3+7jN3r441sQtdHK+Qw5mrIRoEPNgK+/8sel645kvTkEwfFt7/+II8cKuN2rpOmMYqqoeYLKJpOOBoQOy6qUaQwP4PfHTDubBK6DpIqZ7ormkoiyfSsmN+/O+b0611JOvOjR8WXvngvzUKE1+1QaDXJlaoZWJLAMztMOl0i20PRNQoLM1jrbSQ5ob5/jjRJ8AZj7C2byWiSDfStVzeR/vTmcfHZ++qk1pBg42Oq+5dJ/QC1UKS0ew8i8vCHA0SakqvWkFSF0LXxxyN808Jt90mCCGSBrG8vnBd+vIX0l/OPi/uWqwT9LYLODeoHV4idCbHnISkSRAF6tUJ+1wyaUWbS6eAOTHzbJXRcnHaPNI7Ry3mMVjkDf+N0/3/A7XXK+5ZIw4jIsbMrsccYC/MYi4uoRQPz/as4gzGRH5HGCc7GNriwq0Rlz0wGfunVPtK75x8Xn1muEg76BO11Cs1ZZEVFCEEaBkza6+hGmXxzBrVcxLxyFc+JSCUFSZbxhiNEnKBX8hjN7Rm/OAXflCJxHIRtUdt/AFnXSXwPr99j9I/LaIXiDvCoPUA2Ssys3kOhUUdWFIKRiX3jxrbGUyn+ePaYWLm7jPDHqKFFZXkZ0oRwNMp2nNvugayQq5bRayXsj9rYvTFhJFAMg3KzSr6Wz+SYmG4G/s5P+0iv/fBBcWS1QU1xUYMeWr0GQpD4PpHt4lshIknJ1csUW3WstQ3coYtnB4RehKrJVBZKqKUirqfQNWNeecNEevbEPvH0Fxa5fy8o7gaRZSLrOWRNn1oFgT0tUkpxtkF1aZHepWvYfYcoiLM6hF5MfU8ZrWKwZcLbF11OvzmYbgH43osr4qUvz5HTnEwGrz0dYIxAIqGIb7kYs41M0/U/X8TamhCGAq2gse/wPPmyjjcRXL7q89SpT3jFw4dmxMkTC5x8co5k4uBvdoltJ5up3XNBkqnsnaNx4C6G/1xjeH2AECnVhTKVWQNFkbl4xeP1t0a8ccH6rwlNZ33skTnxtacXOXJQJRf7pGGYrVO7Y6LmdArNOsVWg9B2cLrD7F/KLSMr1pUPA85fGPPz3w122uZNBz+yWhPffGaeA/uK1MoKOVVCBGFWzB0hRcRJgusnmOOUc2+Z/Prt4e2N/pOJXz0+K77yWJPDy8Ydwde7PhcuOZz6Vfe2594dD8NDByqiVdPYv6Bh5CVkebtrGAvWNwM2hyF/vezcMf8/1yaL+PMbSZgAAAAASUVORK5CYII=" />
+	<title>Lost Ark Online: Bid Helper</title>
 
 	<style>
-		.img-mw {
-			max-width: 100%;
-			max-height: 25vh;
-		}
-
-		.no-top-border-radius {
-			border-top-left-radius: 0px;
-			border-top-right-radius: 0px;
-		}
-
-		#Prompt {
-			height: 100vh;
-		}
-
-		.spinner-border{
-			height: 5vh;
-			width: 5vh;
-		}
-
-		.overlay{
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background-color: black;
-			opacity: 0.75;
-			z-index: 999;
-		}
 	</style>
 </head>
 <body>
-	<div class="overlay justify-content-center align-items-center d-none">
-		<div id="spinner" class="spinner-border text-light" role="status"></div>
-	</div>
 	<div class="container-fluid">
-		<div id="Prompt" class="row justify-content-center align-items-center">
-			<div class="col-auto">
-				<h1 class="text-info">Paste a lovely screenshot of this adventure's race names.</h1>
-				<h5 class="text-secondary">If paste doesn't work you can try uploading the file like a pleb. <a id="ha" data-toggle="collapse" href="#haha" role="button" class="text-primary">Help! That didn't work either.</a></h5>
-				<h6 id="haha" class="collapse text-secondary">Well then, frankly mate, you're fucked. <a id="hahaha" data-toggle="collapse" href="#hahahaha" role="button" class="text-primary">Maybe this?</a></h6>
-				<h6 id="hahahaha" class="collapse text-secondary">Twice! I got you twice! Oh my god, what a legend. <a id="hahahahaha" data-toggle="collapse" href="#hahahahahaha" role="button" class="text-primary">Third time lucky?</a></h6>
-				<div id="hahahahahaha" class="collapse">
-					<img title="This onion themed adventure has come to an end. Unless?" src="/haha.png" />
-				</div>
-				<input type="file" id="Input" class="mt-3" />
-			</div>
+		<div id="Split" class="row justify-content-center align-items-center mt-5">
 			<div class="col-12 text-center">
-				<div class="col-auto mt-3">
-					<h1 class="text-secondary">- OR -</h1>
-				</div>
+				<h1 class="text-info">A fair split, or a little something extra for you?</h1>
 			</div>
-			<div class="col-auto text-center">
-				<h1 class="text-info">Find the races by searching for them manually.</h1>
-				<form id="Choices" class="align-items-center d-flex">
-					<input id="Choice" list="Races" class="form-control" autocomplete=off placeholder="e.g. The Colossus" required />
-					<datalist id="Races"></datalist>
-					<button id="Add" type="button" class="btn btn-outline-primary ml-3">&#43;</button>
-					<button id="Remove" type="button" class="btn btn-outline-danger ml-3 d-none">&#8722;</button>
-					<button id="Go" type="submit" class="btn btn-primary ml-3">Go</button>
-				</form>
+			<div class="col-5 d-grid">
+				<button id="need" type="button" class="toggle btn btn-light active">A fair split.</button>
+			</div>
+			<div class="col-auto">
+				<h3 class="text-secondary">- OR -</h3>
+			</div>
+			<div class="col-5 d-grid">
+				<button id="greed" type="button" class="toggle btn btn-light">Screw 'em.</button>
 			</div>
 		</div>
 
-		<div class="row justify-content-center">
-			<div class="col-auto">
-				<button type="button" id="Reset" class="btn btn-primary form-control d-none mt-3">Back to Search</button>
-				<input type="hidden" id="Result" />
-				<div id="race1" class="js-race mt-3 d-none shadow">
-					<img id="img1" class="img-mw" />
-					<div id="info1">
-						<div class="card card-body no-top-border-radius bg-info text-light p-1">
-						</div>
-					</div>
-				</div>
-				<div id="race2" class="js-race mt-3 d-none shadow">
-					<img id="img2" class="img-mw" />
-					<div id="info2">
-						<div class="card card-body no-top-border-radius bg-info text-light p-1">
-						</div>
-					</div>
-				</div>
-				<div id="race3" class="js-race mt-3 d-none shadow">
-					<img id="img3" class="img-mw" />
-					<div id="info3">
-						<div class="card card-body no-top-border-radius bg-info text-light p-1">
-						</div>
-					</div>
-				</div>
+		<div class="row justify-content-center align-items-center mt-5">
+			<div class="col-12 text-center">
+				<h1 class="text-info">Split how many ways?</h1>
+			</div>
+			<div class="col-3 d-grid">
+				<input type="number" class="form-control" id="specify" placeholder="Specify group size...">
 			</div>
 		</div>
+
+		<div class="row justify-content-center align-items-center mt-5">
+			<div class="col-12 text-center">
+				<h1 class="text-info">Market Price?</h1>
+			</div>
+			<div class="col-3 d-grid">
+				<input type="number" class="form-control" id="price" placeholder="How much will you sell it for...">
+			</div>
+		</div>
+
+		<div class="row justify-content-center align-items-center mt-5">
+			<div class="col-4 d-grid">
+				<button id="go" type="button" class="btn btn-primary">How much should I bid for it?</button>
+			</div>
+		</div>
+
+		<div class="row justify-content-center align-items-center mt-5">
+			<div class="col-12 text-center">
+				<h1 id="result" class="text-success display-5 fw-bold"></h1>
+			</div>
+		</div>
+
 	</div>
 </body>
 </html>
 
 <script type="text/javascript">
-	window.addEventListener('paste', e => {
-		let input = document.getElementById('Input');
-		input.files = e.clipboardData.files;
-		$(input).change();
-	});
-
 	$(function () {
-		let races;
-		$.ajax({
-			url: '/races.JSON',
-			type: 'GET',
-			dataType: 'json',
-			success: function (response) {
-				races = response;
-				let options = '';
-				for (race in response) {
-					options += `<option>${response[race]['name']}</option>`;
-				}
-				$('#Races').html(options);
+		$('.toggle').on('click', function () {
+			let self = $(this);
+			if (!self.hasClass('active')) {
+				$('.btn').removeClass('active');
+				self.addClass('active');
 			}
 		});
 
-		function toggleOverlay(show) {
-			if (show) {
-				$('.overlay').addClass('d-flex').removeClass('d-none');
-			} else {
-				$('.overlay').addClass('d-none').removeClass('d-flex');
+		$('#go').on('click', update);
+		$('.form-control').on('blur', update);
+
+		function update() {
+			let need = $('#need').hasClass('active');
+
+			let group = parseInt($('#specify').val());
+			let price = parseInt($('#price').val());
+
+			let multiplier = need ? 0.95 : 0.9;
+
+			let result = Math.round(multiplier * (group - 1) / group * price);
+			if (!isNaN(result)) {
+				$('#result').text(result + 'g');
 			}
 		}
-
-		function displayRaces(raceNames) {
-			$('#Prompt').addClass('d-none');
-			$('#Reset').removeClass('d-none');
-			let count = 0;
-			for (result in raceNames) {
-				let sanitisedText = raceNames[result].replace(/\W/g, '').toLowerCase();
-				for (var race in races) {
-					if (count > 2) {
-						toggleOverlay(false);
-						return;
-					}
-
-					let raceLower = race.replace(/\W/g, '').toLowerCase()
-					if (sanitisedText.indexOf(raceLower) > -1) {
-						count++;
-
-						let imgId = 'img' + count;
-						let imgElement = document.getElementById(imgId);
-						let series = races[race]['series'];
-						imgElement.src = `tracks/${series}/${race}.png`;
-
-						$('#info' + count + ' .card-body').html(races[race]['info']);
-						$('#race' + count).removeClass('d-none');
-					}
-				}
-			}
-			toggleOverlay(false);
-		}
-
-		$('#Choices').on('submit', function (e) {
-			e.preventDefault();
-			let raceNames = [];
-			toggleOverlay(true);
-			$('#Choices input').each(function (index, element) {
-				raceNames.push(element.value);
-			});
-			displayRaces(raceNames);
-		});
-
-		$('#Add').on('click', function (e) {
-			let html = '<input list="Races" class="form-control ml-3" autocomplete=off required/>';
-			$('#Choices input:last-of-type').after(html);
-
-			if ($('#Choices input').length > 2) {
-				$('#Add').addClass('d-none');
-				$('#Remove').removeClass('d-none');
-			}
-		});
-
-		$('#Reset').on('click', function () {
-			$('#Prompt').removeClass('d-none');
-			$('#Reset').addClass('d-none');
-			$('.js-race').addClass('d-none');
-		});
-
-		$('#Remove').on('click', function (e) {
-			$('#Choices input:last-of-type').remove();
-
-			if ($('#Choices input').length < 2) {
-				$('#Add').removeClass('d-none');
-				$('#Remove').addClass('d-none');
-			}
-		});
-
-		$('#Input').on('change', function () {
-			var formData = new FormData();
-			formData.append("file", this.files[0]);
-			formData.append("apikey", "72ba59a30f88957");
-
-			$.ajax({
-				url: 'https://api.ocr.space/parse/image',
-				data: formData,
-				dataType: 'json',
-				cache: false,
-				contentType: false,
-				processData: false,
-				type: 'POST',
-				beforeSend: function () {
-					toggleOverlay(true);
-				},
-				success: function (ocrParsedResult) {
-					var parsedResults = ocrParsedResult["ParsedResults"];
-					if (parsedResults != null) {
-						let parsedText = parsedResults[0]["ParsedText"];
-						let resultsArray = parsedText.split('\r\n');
-						$('#Result').html(parsedText);
-						debugger;
-						displayRaces(resultsArray);
-					}
-				}
-			});
-		});
-
 	});
 </script>
