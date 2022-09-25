@@ -73,6 +73,7 @@
 				$('.btn').removeClass('active');
 				self.addClass('active');
 			}
+			update();
 		});
 
 		$('#go').on('click', update);
@@ -87,7 +88,7 @@
 			let multiplier = need ? 0.95 : 0.9;
 
 			let result = Math.round(multiplier * (group - 1) / group * price);
-			if (!isNaN(result)) {
+			if (!isNaN(result) && isFinite(result)) {
 				$('#result').text(result + 'g');
 			}
 		}
